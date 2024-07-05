@@ -27,7 +27,6 @@ public:
 
 	static vector<double> stdAxis0(vector<vector<double>> X) {
 		vector<double> mu_vec = meanAxis0(X);
-
 		vector<double> std_vec;
 	
 		for (int j = 0; j < X[0].size(); j++) {
@@ -36,9 +35,7 @@ public:
 				s += pow(X[i][j] - mu_vec[j],2);
 			std_vec.push_back(sqrt(s / X.size()));
 		}
-
 		return std_vec;
-
 	}
 
 	static vector<vector<double>> read_record(string path) {
@@ -57,7 +54,6 @@ public:
 			}
 			data.push_back(row);
 		}
-
 		return data;
 	}
 
@@ -104,7 +100,6 @@ public:
 
 			priors.push_back(double(x_c.size()) / X.size());
 		}
-
 	}
 
 	vector<double> predict(vector<vector<double>> X) {
@@ -131,7 +126,6 @@ private:
 			double denominator = sqrt(2 * M_PI * pow(std[i],2));
 			gaussian_pdf.push_back(numerator / denominator);
 		}
-
 		return gaussian_pdf;
 	}
 
@@ -155,7 +149,6 @@ private:
 				max_idx = idx;
 			}
 		}
-
 		return classes[max_idx];
 	}
 
