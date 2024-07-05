@@ -164,7 +164,7 @@ private:
 int main() {
 	vector<vector<double>> A = { {2,1,3},{3,4,5} };
 	
-	vector<vector<double>> data = Utils::read_record("Files/data_set.csv");
+	vector<vector<double>> data = Utils::read_record("example_set.csv");
 
 	vector<vector<double>> train_x;
 	vector<vector<double>> test_x;
