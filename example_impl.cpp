@@ -13,7 +13,7 @@ using namespace std;
 class Utils {
 
 public:
-	static vector<double> meanAxis0(vector<vector<double>> X) {
+	static vector<double> meanAxis0(vector<vector<double> > X) {
 		vector<double> m_vec;
 
 		for (int j = 0; j < X[0].size(); j++) {
@@ -25,7 +25,7 @@ public:
 		return m_vec;
 	}
 
-	static vector<double> stdAxis0(vector<vector<double>> X) {
+	static vector<double> stdAxis0(vector<vector<double> > X) {
 		vector<double> mu_vec = meanAxis0(X);
 		vector<double> std_vec;
 	
@@ -38,8 +38,8 @@ public:
 		return std_vec;
 	}
 
-	static vector<vector<double>> read_record(string path) {
-		vector<vector<double>> data;
+	static vector<vector<double> > read_record(string path) {
+		vector<vector<double> > data;
 		ifstream file(path);
 		string str;
 		while (getline(file, str)) {
@@ -57,7 +57,7 @@ public:
 		return data;
 	}
 
-	static void printMat(vector<vector<double>> A) {
+	static void printMat(vector<vector<double> > A) {
 		for (vector<double> row : A) {
 			printVec(row);
 			cout << endl;
@@ -81,7 +81,7 @@ public:
 class NaiveBayes {
 
 public:
-	NaiveBayes(vector<vector<double>> X, vector<double> y) {
+	NaiveBayes(vector<vector<double> > X, vector<double> y) {
 		this->X = X;
 		this->y = y;
 	}
@@ -90,7 +90,7 @@ public:
 		classes = Utils::unique(this->y);
 
 		for (double c : classes) {
-			vector<vector<double>> x_c;
+			vector<vector<double> > x_c;
 			for (int i = 0; i < y.size(); i++)
 				if (c == y[i])
 					x_c.push_back(X[i]);
@@ -102,7 +102,7 @@ public:
 		}
 	}
 
-	vector<double> predict(vector<vector<double>> X) {
+	vector<double> predict(vector<vector<double> > X) {
 		vector<double> y_pred;
 		for (vector<double> x : X)
 			y_pred.push_back(__predict__(x));
@@ -111,8 +111,8 @@ public:
 
 private:
 	vector<double> classes,priors;
-	vector<vector<double>> means, stds;
-	vector<vector<double>> X;
+	vector<vector<double> > means, stds;
+	vector<vector<double> > X;
 	vector<double> y;
 
 	vector<double> pdf(int idx, vector<double> x) {
@@ -155,12 +155,12 @@ private:
 };
 
 int main() {
-	vector<vector<double>> A = { {2,1,3},{3,4,5} };
+	vector<vector<double> > A = { {2,1,3},{3,4,5} };
 	
-	vector<vector<double>> data = Utils::read_record("example_set.csv");
+	vector<vector<double> > data = Utils::read_record("example_set.csv");
 
-	vector<vector<double>> train_x;
-	vector<vector<double>> test_x;
+	vector<vector<double> > train_x;
+	vector<vector<double> > test_x;
 
 	vector<double>train_y;
 	vector<double>test_y;

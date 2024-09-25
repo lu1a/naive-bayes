@@ -27,7 +27,7 @@ class NaiveBayes:
 
     def __predict__(self, x):  # Helper Function for the function 'predict'
         posteriors = []
-        for idx, c in enumerate(self.classes):
+        for idx, _ in enumerate(self.classes):
             prior = self.priors[idx]  # P(yi)
 
             P_X_yi = self.__gauss_pdf__(idx, x)  # P(X | yi) - Likelihood
